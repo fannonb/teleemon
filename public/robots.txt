@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+User-Agent: *
+Disallow: /about
+
+Sitemap: https://teleemon.com/sitemap.xml

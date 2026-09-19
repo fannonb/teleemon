@@ -1,0 +1,33 @@
+<svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style>
+  @keyframes drawIn {
+    0% { stroke-dashoffset: 1000; }
+    90% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 0; }
+  }
+  @keyframes fadeIn {
+    0%, 90% { fill-opacity: 0; }
+    100% { fill-opacity: 1; }
+  }
+  @keyframes highlight {
+    0%, 90% { stroke: #3007ad; }
+    95% { stroke: #3007ad; }
+    100% { stroke: #3007ad; }
+  }
+  #pill-icon {
+    stroke: #3007ad;
+    stroke-width: 1;
+    fill: #3007ad;
+    fill-opacity: 0;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: 
+      drawIn 5s ease-out forwards,
+      fadeIn 2s ease-out forwards,
+      highlight 2s ease-out forwards;
+  }
+</style>
+<g id="pill-icon" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+<path d="M73.6941697,31.6968317 L55.3830258,50 L34,28.6116632 L52.3046494,10.3052474 C58.2795572,4.46940757 67.8556458,4.57982413 73.6941697,10.5553084 C79.4352768,16.4333664 79.4352768,25.8187738 73.6941697,31.6968317 L73.6941697,31.6968317 Z M31.7487718,73.5821082 L31.7487718,73.5821082 C25.8614878,79.4726306 16.3084141,79.4726306 10.4178918,73.5821082 C4.52736941,67.6948242 4.52736941,58.1449889 10.4178918,52.2512282 L28.6691199,34 L50,55.3308801 L31.7487718,73.5821082 Z M47.2053114,6.31441994 L6.1220047,47.3937694 C-2.19050797,55.9166172 -2.01564405,69.5654788 6.51059119,77.877846 C14.8813918,86.0412576 28.2390524,86.0412576 36.6098531,77.8746078 L77.6996362,36.7952584 C86.1028191,28.3727936 86.0995809,14.7336465 77.6931598,6.31441994 C69.277024,-2.10480665 55.6246853,-2.10480665 47.2053114,6.31441994 Z" id="Fill-1-Copy"></path>
+</g>
+</svg>
