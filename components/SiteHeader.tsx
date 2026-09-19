@@ -34,9 +34,10 @@ export function SiteHeader() {
             <Image
               src="/svg/teleemon-logo-icon-only.svg"
               alt="Teleemon Logo"
-              width={30}
-              height={30}
+              width={40}
+              height={40}
               priority
+              className="site-nav-logo"
             />
             <span>
               Teleemon{" "}
