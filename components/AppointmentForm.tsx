@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useMemo, useState } from "react";
-import { insuranceCompanies } from "@/lib/site";
+import { FormEvent, useState } from "react";
 
 type FormState = {
   fullName: string;
@@ -77,8 +76,6 @@ export function AppointmentForm() {
 
   const showOther = form.services.includes("other");
   const showPolicyholder = form.primaryPolicyholder === "no";
-
-  const insuranceListId = useMemo(() => "insurance-list", []);
 
   function toggleService(value: string) {
     setForm((prev) => {
@@ -211,6 +208,7 @@ export function AppointmentForm() {
               </label>
               <input
                 id="fullName"
+                type="text"
                 className={invalid.fullName ? "is-invalid" : ""}
                 value={form.fullName}
                 onChange={(e) => setForm({ ...form, fullName: e.target.value })}
@@ -224,10 +222,13 @@ export function AppointmentForm() {
               </label>
               <input
                 id="dob"
-                type="date"
+                type="text"
+                inputMode="numeric"
+                placeholder="mm/dd/yyyy"
                 className={invalid.dob ? "is-invalid" : ""}
                 value={form.dob}
                 onChange={(e) => setForm({ ...form, dob: e.target.value })}
+                autoComplete="bday"
                 required
               />
             </div>
@@ -342,6 +343,7 @@ export function AppointmentForm() {
               </label>
               <input
                 id="otherService"
+                type="text"
                 className={invalid.otherService ? "is-invalid" : ""}
                 value={form.otherService}
                 onChange={(e) => setForm({ ...form, otherService: e.target.value })}
@@ -376,20 +378,14 @@ export function AppointmentForm() {
               </label>
               <input
                 id="insurance"
-                list={insuranceListId}
+                type="text"
                 className={invalid.insurance ? "is-invalid" : ""}
                 value={form.insurance}
                 onChange={(e) => setForm({ ...form, insurance: e.target.value })}
                 placeholder="e.g. Premera, Aetna, Regence"
+                autoComplete="organization"
                 required
               />
-              <datalist id={insuranceListId}>
-                {insuranceCompanies.map((name) => (
-                  <option key={name} value={name} />
-                ))}
-                <option value="Private pay / Self-pay" />
-                <option value="Other / Not listed" />
-              </datalist>
             </div>
             <div className="form-field full">
               <label id="policyholder-label">
@@ -426,6 +422,7 @@ export function AppointmentForm() {
                 </label>
                 <input
                   id="policyholderInfo"
+                  type="text"
                   className={invalid.policyholderInfo ? "is-invalid" : ""}
                   value={form.policyholderInfo}
                   onChange={(e) => setForm({ ...form, policyholderInfo: e.target.value })}
@@ -482,19 +479,14 @@ export function AppointmentForm() {
               </label>
               <input
                 id="appointmentState"
-                list="state-list"
+                type="text"
                 className={invalid.appointmentState ? "is-invalid" : ""}
                 value={form.appointmentState}
                 onChange={(e) => setForm({ ...form, appointmentState: e.target.value })}
                 placeholder="e.g. Washington"
+                autoComplete="address-level1"
                 required
               />
-              <datalist id="state-list">
-                <option value="Washington" />
-                <option value="California" />
-                <option value="Colorado" />
-                <option value="Rhode Island" />
-              </datalist>
             </div>
           </div>
         </section>
