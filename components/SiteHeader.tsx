@@ -87,7 +87,11 @@ export function SiteHeader() {
         </div>
       </header>
 
-      <Link href="/request-appointment" className="btn-primary mobile-book" title="Book an Appointment">
+      <Link
+        href="/request-appointment"
+        className={`btn-primary mobile-book${pathname.startsWith("/request-appointment") ? " is-hidden-on-page" : ""}`}
+        title="Book an Appointment"
+      >
         Book an Appointment
       </Link>
     </>

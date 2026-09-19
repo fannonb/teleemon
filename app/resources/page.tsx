@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SiteShell } from "@/components/SiteShell";
 import { insuranceCompanies } from "@/lib/site";
 
@@ -51,16 +52,30 @@ export default function ResourcesPage() {
         </p>
       </section>
 
-      <section className="section-card">
+      <section className="section-card mb-6">
         <h3 className="mb-2 text-xl font-semibold text-teleemon-purple-800">Insurance Companies:</h3>
         <p className="body-text">We will collaborate your care with the insurance companies listed below:</p>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {insuranceCompanies.map((name) => (
-            <div key={name} className="rounded-lg border border-teleemon-purple-200 bg-white/80 px-3 py-2 text-teleemon-purple-900">
+            <div
+              key={name}
+              className="rounded-lg border border-teleemon-purple-200 bg-white/80 px-3 py-2 text-teleemon-purple-900"
+            >
               {name}
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="section-card">
+        <h3 className="mb-2 text-xl font-semibold text-teleemon-purple-800">Privacy Policy</h3>
+        <p className="body-text">
+          Learn how Teleemon Behavioral Health collects, uses, and protects your personal and health
+          information.
+        </p>
+        <Link href="/privacy-policy" className="btn-primary inline-flex">
+          View Privacy Policy
+        </Link>
       </section>
     </SiteShell>
   );
