@@ -181,7 +181,9 @@ export default function DigitalCardPage() {
           {contacts.map((item) => (
             <a
               key={`${item.label}-${item.value}`}
-              className="card-contact-row"
+              className={`card-contact-row${
+                "hideLabel" in item && item.hideLabel ? " card-contact-row--value-only" : ""
+              }`}
               href={item.href}
               {...("hideLabel" in item && item.hideLabel ? { "aria-label": item.label } : {})}
               {...("external" in item && item.external

@@ -184,11 +184,15 @@
 
 .card-contact-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.85rem;
   text-decoration: none;
   color: inherit;
-  padding: 0.15rem 0;
+  padding: 0.2rem 0;
+}
+
+.card-contact-row--value-only {
+  min-height: 2.35rem;
 }
 
 .card-contact-icon {
@@ -206,15 +210,23 @@
 .card-contact-text {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  justify-content: center;
+  gap: 0.12rem;
   min-width: 0;
+  flex: 1;
+  padding: 0.05rem 0;
 }
 
 .card-contact-text strong {
   font-size: 0.95rem;
   font-weight: 600;
+  line-height: 1.35;
   color: var(--card-ink);
   word-break: break-word;
+}
+
+.card-contact-row--value-only .card-contact-text strong {
+  line-height: 1.4;
 }
 
 .card-contact-text small {
