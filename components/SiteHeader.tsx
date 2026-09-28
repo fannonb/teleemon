@@ -6,6 +6,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/site";
 
+const BOOK_APPOINTMENT_URL =
+  "https://patientportal.advancedmd.com/158995/onlinescheduling";
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -39,9 +42,8 @@ export function SiteHeader() {
               priority
               className="site-nav-logo"
             />
-            <span>
-              Teleemon{" "}
-              <span className="hidden 2xl:inline xl:inline lg:inline">Behavioral Health</span>
+            <span className="site-nav-brand-name">
+              Teleemon Behavioral Health &amp; Wellness, PLLC
             </span>
           </Link>
         </div>
@@ -57,9 +59,15 @@ export function SiteHeader() {
         </ul>
 
         <div className="flex items-center gap-2" ref={menuRef}>
-          <Link href="/request-appointment" className="btn-primary desktop-book" title="Book an Appointment">
+          <a
+            href={BOOK_APPOINTMENT_URL}
+            className="btn-primary desktop-book"
+            title="Book an Appointment"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Book an Appointment
-          </Link>
+          </a>
           <button
             type="button"
             className="mobile-menu-btn"
@@ -88,13 +96,15 @@ export function SiteHeader() {
         </div>
       </header>
 
-      <Link
-        href="/request-appointment"
-        className={`btn-primary mobile-book${pathname.startsWith("/request-appointment") ? " is-hidden-on-page" : ""}`}
+      <a
+        href={BOOK_APPOINTMENT_URL}
+        className="btn-primary mobile-book"
         title="Book an Appointment"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Book an Appointment
-      </Link>
+      </a>
     </>
   );
 }

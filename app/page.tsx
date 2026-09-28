@@ -135,16 +135,16 @@ export default function HomePage() {
               title="Give us a call on our primary office line."
               className="mt-1 flex justify-center text-center text-[.9rem] font-bold text-teleemon-purple-600 hover:text-teleemon-purple-400 hover:underline xs:mb-2 xs:mt-2 xs:text-[1.1rem] sm:mb-2 sm:mt-2 sm:text-[1.1rem] md:mb-2 md:mt-2 md:text-[1.1rem]"
             >
-              Office: + 1 425-615-9655
+              Office: {siteConfig.officePhone}
             </a>
             <a
               href={siteConfig.phoneHref}
-              title="Give us a call on our secondary line."
+              title="Give us a call on our cell phone."
               className="my-1 flex justify-center text-center text-[.9rem] font-bold text-teleemon-purple-600 hover:text-teleemon-purple-400 hover:underline xs:mb-2 xs:text-[1.1rem] sm:mb-2 sm:text-[1.1rem] md:mb-2 md:text-[1.1rem]"
             >
-              Phone: + 1 425-615-8930
+              Cell phone: {siteConfig.phone}
             </a>
-            <div className="text-[.9rem] text-black xs:mb-2 xs:text-[1.1rem] sm:mb-2 sm:text-[1.1rem] md:mb-2 md:text-[1.1rem]">
+            <div className="my-1 flex justify-center text-center text-[.9rem] font-bold text-teleemon-purple-600 xs:mb-2 xs:text-[1.1rem] sm:mb-2 sm:text-[1.1rem] md:mb-2 md:text-[1.1rem]">
               Fax: {siteConfig.fax}
             </div>
             <a
@@ -158,11 +158,11 @@ export default function HomePage() {
           </div>
           <div className="mt-6 flex w-full flex-col items-center justify-center text-center xs:my-5 sm:my-5 md:my-5">
             <h4 className="mb-2 font-semibold text-teleemon-purple-700">
-              * Same day appointments available
+              * Same-day appointments may be accommodated when available
             </h4>
             <p className="body-text mb-0 max-w-xl text-sm">
-              If you feel like you may be having a mental health emergency, please call 911 or go to
-              the nearest emergency room immediately.
+              If you feel like you may be having a mental health emergency, please call 911, 988, or
+              go to the nearest emergency room immediately.
             </p>
           </div>
         </div>

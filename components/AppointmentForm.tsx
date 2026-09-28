@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { DobDatePicker } from "@/components/DobDatePicker";
 
 type FormState = {
   fullName: string;
@@ -155,15 +156,27 @@ export function AppointmentForm() {
     if (!validate()) return;
     setSubmitting(true);
     try {
-      const res = await fetch("/api/appointment-request", {
+      const payload = {
+        ...form,
+        submittedAt: new Date().toISOString(),
+        source: "teleemon-request-appointment",
+      };
+
+      let res = await fetch("/api/appointment-request", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...form,
-          submittedAt: new Date().toISOString(),
-          source: "teleemon-request-appointment",
-        }),
+        body: JSON.stringify(payload),
       });
+
+      // Static Hostinger deploy uses a PHP endpoint instead of Next route handlers.
+      if (res.status === 404 || res.status === 405) {
+        res = await fetch("/api/appointment-request.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+      }
+
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data?.ok === false) {
         throw new Error(data?.error || `Request failed (${res.status}).`);
@@ -220,15 +233,11 @@ export function AppointmentForm() {
               <label htmlFor="dob">
                 Date of Birth <span className="req">*</span>
               </label>
-              <input
+              <DobDatePicker
                 id="dob"
-                type="text"
-                inputMode="numeric"
-                placeholder="mm/dd/yyyy"
-                className={invalid.dob ? "is-invalid" : ""}
                 value={form.dob}
-                onChange={(e) => setForm({ ...form, dob: e.target.value })}
-                autoComplete="bday"
+                onChange={(dob) => setForm({ ...form, dob })}
+                invalid={invalid.dob}
                 required
               />
             </div>
@@ -286,7 +295,8 @@ export function AppointmentForm() {
             </div>
             <div className="form-field full">
               <label id="voicemail-label">
-                May we leave a voicemail identifying Teleemon Behavioral Health &amp; Wellness?{" "}
+                May we leave a voicemail identifying Teleemon Behavioral Health &amp; Wellness,
+                PLLC?{" "}
                 <span className="req">*</span>
               </label>
               <div className="choice-group choice-binary" role="radiogroup" aria-labelledby="voicemail-label">
@@ -507,7 +517,7 @@ export function AppointmentForm() {
               <span>
                 I understand that submitting this form does not establish a provider-patient
                 relationship or guarantee an appointment. I authorize Teleemon Behavioral Health
-                &amp; Wellness to contact me using the information provided. Standard telephone,
+                &amp; Wellness, PLLC to contact me using the information provided. Standard telephone,
                 text-message, or email risks and charges may apply.
               </span>
             </label>

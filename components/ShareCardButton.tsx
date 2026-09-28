@@ -14,7 +14,7 @@ type Props = {
 export function ShareCardButton({
   url,
   title,
-  shareText = "Here's my digital business card — Teleemon Behavioral Health.",
+  shareText = "Here's my digital business card — Teleemon Behavioral Health & Wellness, PLLC.",
   className = "",
   variant = "secondary",
 }: Props) {

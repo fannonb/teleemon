@@ -43,7 +43,8 @@ export default function PrivacyPolicyPage() {
     <SiteShell bg="privacy">
       <h1 className="heading-level-1">Privacy Policy</h1>
       <p className="body-text">
-        At Teleemon Behavioral Health, we are committed to protecting your privacy and maintaining
+        At Teleemon Behavioral Health &amp; Wellness, PLLC, we are committed to protecting your
+        privacy and maintaining
         the confidentiality of your health information. This Privacy Policy explains how we collect,
         use, and safeguard your information when you visit our website.
       </p>

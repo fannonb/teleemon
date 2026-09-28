@@ -110,18 +110,12 @@
 
 .card-brand-name {
   margin: 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
-}
-
-.card-brand-sub {
-  margin: 0.1rem 0 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  max-width: 16rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
   text-transform: uppercase;
-  opacity: 0.92;
 }
 
 .card-hero-person {

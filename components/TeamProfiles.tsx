@@ -37,7 +37,7 @@ export function TeamProfiles() {
           <div className="inner-body-bottom">
             <aside className="team-sidebar">
               <Image
-                src="/img/photo-of-frank-b.jpg"
+                src="/img/photo-of-frank.jpg"
                 alt="Photo of the Provider: Frank Bashumika"
                 title="Photo of the Provider: Frank Bashumika"
                 width={200}

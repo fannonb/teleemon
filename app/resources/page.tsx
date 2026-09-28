@@ -10,7 +10,7 @@ export default function ResourcesPage() {
     <SiteShell bg="resources">
       <header className="mb-8 flex flex-col gap-6 lg:flex-row xl:flex-row 2xl:flex-row">
         <Image
-          src="/img/frank-bw-photo-with-mask.jpg"
+          src="/img/photo-of-frank.jpg"
           alt="Photo of the Provider: Frank Bashumika"
           width={250}
           height={250}
@@ -34,8 +34,8 @@ export default function ResourcesPage() {
         <h2 className="mb-3 text-xl font-semibold text-teleemon-purple-800">In case of emergency:</h2>
         <ul className="m-0 list-disc space-y-2 pl-5 text-teleemon-purple-1000">
           <li>
-            If you feel like you may be having a mental health emergency, please call 911 or go to
-            the nearest emergency room immediately.
+            If you feel like you may be having a mental health emergency, please call 911, 988, or go
+            to the nearest emergency room immediately.
           </li>
           <li>Call 911 for any life-threatening situations.</li>
           <li>
@@ -70,7 +70,8 @@ export default function ResourcesPage() {
       <section className="section-card">
         <h3 className="mb-2 text-xl font-semibold text-teleemon-purple-800">Privacy Policy</h3>
         <p className="body-text">
-          Learn how Teleemon Behavioral Health collects, uses, and protects your personal and health
+          Learn how Teleemon Behavioral Health &amp; Wellness, PLLC collects, uses, and protects your
+          personal and health
           information.
         </p>
         <Link href="/privacy-policy" className="btn-primary inline-flex">

@@ -7,44 +7,52 @@ import "./card.css";
 export const metadata: Metadata = {
   title: "Frank Bashumika | Digital Business Card",
   description:
-    "Save Frank Bashumika’s contact — Teleemon Behavioral Health. MPH, ARNP, PMHNP-BC.",
+    "Save Frank Bashumika’s contact — Teleemon Behavioral Health & Wellness, PLLC. MPH, ARNP, PMHNP-BC.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Frank Bashumika — Teleemon Behavioral Health",
+    title: "Frank Bashumika — Teleemon Behavioral Health & Wellness, PLLC",
     description: "Tap Save Contact to add Frank to your phone.",
     url: `${siteConfig.url}/card`,
-    images: [{ url: "/img/frank-bw-photo-with-mask.jpg" }],
+    images: [{ url: "/img/photo-of-frank.jpg" }],
   },
 };
 
 const CARD_URL = `${siteConfig.url}/card`;
-const VCARD_HREF = "/api/vcard";
+const VCARD_HREF = "/frank-bashumika.vcf";
 
 const contacts = [
   {
-    label: "Phone",
-    value: "+1 833-711-4191",
-    href: "tel:+18337114191",
+    label: "Office",
+    value: "+1 833-711-4192",
+    href: "tel:+18337114192",
     icon: "phone",
   },
   {
     label: "Fax",
-    value: "+1 833-711-4191",
-    href: "tel:+18337114191",
+    value: "+1 833-711-4192",
+    href: "tel:+18337114192",
     icon: "fax",
+  },
+  {
+    label: "Cell phone",
+    value: "+1 425-615-8930",
+    href: "tel:+14256158930",
+    icon: "phone",
   },
   {
     label: "Email",
     value: "info@teleemon.com",
     href: "mailto:info@teleemon.com",
     icon: "email",
+    hideLabel: true,
   },
   {
-    label: "Office",
+    label: "Address",
     value: "16301 NE 8th Street, Suite 233, Bellevue, WA 98008",
     href: siteConfig.mapsUrl,
     icon: "pin",
     external: true,
+    hideLabel: true,
   },
   {
     label: "Website",
@@ -52,6 +60,7 @@ const contacts = [
     href: "https://www.teleemon.com",
     icon: "web",
     external: true,
+    hideLabel: true,
   },
 ] as const;
 
@@ -120,8 +129,8 @@ export default function DigitalCardPage() {
           </a>
           <ShareCardButton
             url={CARD_URL}
-            title="Frank Bashumika | Teleemon Behavioral Health"
-            shareText="Here's Frank Bashumika's digital card (Teleemon Behavioral Health):"
+            title="Frank Bashumika | Teleemon Behavioral Health & Wellness, PLLC"
+            shareText="Here's Frank Bashumika's digital card (Teleemon Behavioral Health & Wellness, PLLC):"
             variant="primary"
             className="card-share-top"
           />
@@ -138,8 +147,9 @@ export default function DigitalCardPage() {
               priority
             />
             <div>
-              <p className="card-brand-name">Teleemon</p>
-              <p className="card-brand-sub">Behavioral Health</p>
+              <p className="card-brand-name">
+                Teleemon Behavioral Health &amp; Wellness, PLLC
+              </p>
             </div>
           </div>
 
@@ -150,7 +160,7 @@ export default function DigitalCardPage() {
               <p className="card-role">Psychiatric Mental Health Nurse Practitioner</p>
             </div>
             <Image
-              src="/img/frank-bw-photo-with-mask.jpg"
+              src="/img/photo-of-frank.jpg"
               alt="Frank Bashumika"
               width={112}
               height={112}
@@ -162,8 +172,8 @@ export default function DigitalCardPage() {
 
         <section className="card-bio">
           <p>
-            Compassionate, ADHD-dedicated care for evaluation, medication management, and recovery
-            support — helping you discover the best version of yourself.
+            Personalized assessment and medication management for mood, anxiety, ADHD, and other
+            mental health conditions—supporting wellness and optimal functioning.
           </p>
         </section>
 
@@ -173,6 +183,7 @@ export default function DigitalCardPage() {
               key={`${item.label}-${item.value}`}
               className="card-contact-row"
               href={item.href}
+              {...("hideLabel" in item && item.hideLabel ? { "aria-label": item.label } : {})}
               {...("external" in item && item.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
@@ -182,7 +193,7 @@ export default function DigitalCardPage() {
               </span>
               <span className="card-contact-text">
                 <strong>{item.value}</strong>
-                <small>{item.label}</small>
+                {"hideLabel" in item && item.hideLabel ? null : <small>{item.label}</small>}
               </span>
             </a>
           ))}

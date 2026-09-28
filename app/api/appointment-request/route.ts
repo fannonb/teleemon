@@ -88,10 +88,14 @@ export async function POST(request: Request) {
 
     const host = process.env.SMTP_HOST || "smtp.hostinger.com";
     const port = Number(process.env.SMTP_PORT || 465);
-    const user = process.env.SMTP_USER;
-    const pass = process.env.SMTP_PASS;
+    const user = process.env.SMTP_USER?.trim();
+    const pass = process.env.SMTP_PASS?.trim();
     const to = process.env.MAIL_TO || "info@teleemon.com";
     const from = process.env.MAIL_FROM || user || to;
+    const secure =
+      process.env.SMTP_SECURE != null
+        ? process.env.SMTP_SECURE === "true" || process.env.SMTP_SECURE === "1"
+        : port === 465;
 
     if (!user || !pass) {
       return NextResponse.json(
@@ -165,9 +169,16 @@ export async function POST(request: Request) {
     const transporter = nodemailer.createTransport({
       host,
       port,
-      secure: port === 465,
+      secure,
       auth: { user, pass },
+      requireTLS: !secure && port === 587,
+      tls: {
+        // Hostinger uses valid certs; keep verification on
+        minVersion: "TLSv1.2",
+      },
     });
+
+    await transporter.verify();
 
     await transporter.sendMail({
       from: `"Teleemon Website" <${from}>`,
@@ -181,10 +192,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, message: "Appointment request sent." });
   } catch (error) {
     console.error("Appointment form mail error:", error);
+    const message = error instanceof Error ? error.message : String(error);
+    const isAuth = /auth|535|invalid login/i.test(message);
     return NextResponse.json(
       {
         ok: false,
-        error: "Unable to send your request right now. Please call the office or email info@teleemon.com.",
+        error: isAuth
+          ? "Email login failed. In Hostinger Emails, confirm the mailbox password for SMTP_USER (full address like info@teleemon.com). Try SMTP_PORT=587 with SMTP_SECURE=false if 465 keeps failing."
+          : "Unable to send your request right now. Please call the office or email info@teleemon.com.",
       },
       { status: 500 },
     );

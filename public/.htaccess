@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Keep real files/directories first
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Appointment endpoint fallback for static export hosting
+RewriteRule ^api/appointment-request/?$ api/appointment-request.php [L,QSA]
+
+# vCard for Save Contact on static hosting
+RewriteRule ^api/vcard/?$ frank-bashumika.vcf [L]
+
+# Serve exported html routes without ".html" in URL
+RewriteRule ^(.+?)/?$ $1.html [L,QSA]
