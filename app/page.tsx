@@ -1,7 +1,8 @@
 import Image from "next/image";
+import { ContactInfo } from "@/components/ContactInfo";
 import { Highlighter } from "@/components/Highlighter";
 import { SiteShell } from "@/components/SiteShell";
-import { focusAreas, siteConfig } from "@/lib/site";
+import { focusAreas } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -120,42 +121,7 @@ export default function HomePage() {
           <h3 className="heading-level-5 flex items-end justify-center pt-4 text-center leading-tight text-teleemon-purple-800 xs:justify-center xs:pt-1 xs:text-center sm:justify-center sm:pt-1 sm:text-center md:justify-center md:text-center">
             Contact Info
           </h3>
-          <div className="mt-2 text-center xs:w-full sm:w-full md:w-full">
-            <a
-              href={siteConfig.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Open our map address in a new tab"
-              className="mt-5 block text-base text-teleemon-purple-700 underline hover:cursor-pointer hover:text-teleemon-purple-500 xs:mb-2 xs:text-xl sm:mb-2 sm:text-xl md:mb-2 md:text-xl"
-            >
-              {siteConfig.address}
-            </a>
-            <a
-              href={siteConfig.officePhoneHref}
-              title="Give us a call on our primary office line."
-              className="mt-1 flex justify-center text-center text-[.9rem] font-bold text-teleemon-purple-600 hover:text-teleemon-purple-400 hover:underline xs:mb-2 xs:mt-2 xs:text-[1.1rem] sm:mb-2 sm:mt-2 sm:text-[1.1rem] md:mb-2 md:mt-2 md:text-[1.1rem]"
-            >
-              Office: {siteConfig.officePhone}
-            </a>
-            <a
-              href={siteConfig.phoneHref}
-              title="Give us a call on our cell phone."
-              className="my-1 flex justify-center text-center text-[.9rem] font-bold text-teleemon-purple-600 hover:text-teleemon-purple-400 hover:underline xs:mb-2 xs:text-[1.1rem] sm:mb-2 sm:text-[1.1rem] md:mb-2 md:text-[1.1rem]"
-            >
-              Cell phone: {siteConfig.phone}
-            </a>
-            <div className="my-1 flex justify-center text-center text-[.9rem] font-bold text-teleemon-purple-600 xs:mb-2 xs:text-[1.1rem] sm:mb-2 sm:text-[1.1rem] md:mb-2 md:text-[1.1rem]">
-              Fax: {siteConfig.fax}
-            </div>
-            <a
-              href={`mailto:${siteConfig.email}?subject=Email%20from%20Teleemon.com&body=Hello%20Teleemon%20Team,%0D%0A%0D%0AI%20am%20reaching%20out%20regarding%20your%20services.%0D%0A%0D%0A%0D%0AThank%20you!`}
-              title="Send us an email!"
-              className="btn btn-tertiary btn-sm mt-2 inline-block text-sm text-black transition-all duration-200 hover:cursor-pointer hover:bg-teleemon-purple-800 hover:text-white"
-            >
-              {siteConfig.email}
-            </a>
-            <div className="mt-4 text-[1.1rem] text-teleemon-blue-900">Hours: {siteConfig.hours}</div>
-          </div>
+          <ContactInfo />
           <div className="mt-6 flex w-full flex-col items-center justify-center text-center xs:my-5 sm:my-5 md:my-5">
             <h4 className="mb-2 font-semibold text-teleemon-purple-700">
               * Same-day appointments may be accommodated when available

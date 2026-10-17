@@ -23,14 +23,14 @@ const VCARD_HREF = "/frank-bashumika.vcf";
 const contacts = [
   {
     label: "Office",
-    value: "+1 833-711-4192",
-    href: "tel:+18337114192",
+    value: "+1 833-711-4191",
+    href: "tel:+18337114191",
     icon: "phone",
   },
   {
     label: "Fax",
-    value: "+1 833-711-4192",
-    href: "tel:+18337114192",
+    value: "+1 833-711-4191",
+    href: "tel:+18337114191",
     icon: "fax",
   },
   {
